@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+header {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 4rem;
+  padding: 2rem;
+  font-family: "Mr Dafoe", cursive;
+  letter-spacing: 0.4rem;
+  color: #d35400;
+}
+
+.photoalbum-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.photoalbum {
+  width: 18%;
+  height: 25rem;
+  background-color: #e8ecf1;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in;
+}
+
+.photoalbum:hover {
+  transform: scale(1.1);
+}
+
+.photoalbum h1 {
+  text-transform: capitalize;
+}

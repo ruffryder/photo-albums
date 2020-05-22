@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   // the output bundle won't be optimized for production but suitable for development
@@ -9,6 +10,7 @@ module.exports = {
   output: {
     // the output of the webpack build will be in /dist directory
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/dist/",
     // the filename of the JS bundle will be bundle.js
     filename: "bundle.js",
   },
@@ -26,19 +28,25 @@ module.exports = {
           presets: ["@babel/preset-env", "@babel/preset-react"],
         },
       },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
 
   devServer: {
     contentBase: path.join(__dirname, "public/"),
     port: 3000,
-    publicPath: "http://localhost:3000/",
-    hotOnly: true,
+    publicPath: "http://localhost:3000",
+    hot: true,
+    watchOptions: { poll: true },
   },
   // add a custom index.html as the template
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 };
