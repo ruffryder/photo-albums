@@ -1,3 +1,4 @@
+/* Basic reset */
 * {
   margin: 0;
   padding: 0;
@@ -8,10 +9,16 @@ html {
   font-size: 62.5%;
 }
 
+/* Main styles begin */
 body {
   padding: 0;
   margin: 0;
   font-family: "Open Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #6c7a89;
 }
 
 header {
@@ -24,17 +31,34 @@ header {
   color: #d35400;
 }
 
-.photoalbum-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+img {
+  max-width: 100%;
 }
 
-.photoalbum {
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 1rem;
+}
+
+/* Main styles begin */
+
+/* Photo Album Styles begin */
+.photo-album__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.photo-album {
   width: 18%;
   height: 25rem;
   background-color: #e8ecf1;
   box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,10 +68,94 @@ header {
   transition: transform 0.2s ease-in;
 }
 
-.photoalbum:hover {
+.photo-album:hover {
   transform: scale(1.1);
 }
 
-.photoalbum h1 {
+.photo-album__title {
   text-transform: capitalize;
 }
+
+/* Photo Album Styles end */
+
+/* Photos Styles begin */
+
+.photo-items__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 86rem;
+  margin: 0 auto;
+}
+
+.photo-item {
+  width: 25%;
+  margin: 0 1rem 1.2rem;
+  max-width: 360px;
+  padding: 1rem;
+  text-align: center;
+  background-color: #d35400;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 0.4rem;
+  opacity: 0.5;
+  transition: opacity 0.25s ease-in;
+}
+
+.photo-item:hover {
+  opacity: 1;
+}
+
+.photo-item__title {
+  font-size: 1.2rem;
+}
+/* Photos Styles end */
+
+/* Icon Styles begin */
+.icon {
+  font-size: 2rem;
+  transition: transform 0.3s ease-in;
+  cursor: pointer;
+}
+
+.icon:hover {
+  transform: scale(1.18);
+}
+
+.favourite-icon {
+  color: rgba(217, 30, 24, 0.5);
+  transition: color 0.3s ease-in;
+}
+
+.favourite-icon:hover {
+  color: #d91e18;
+}
+
+.remove-icon {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.remove-icon:hover {
+  color: #000;
+}
+
+/* Icon Styles end */
+
+/* Favourites Styles begin */
+.btn-favourites {
+  margin-top: 4rem;
+  background-color: #d35400;
+  color: white;
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  transition: all 0.25s ease-in;
+}
+
+.btn-favourites:hover,
+.btn-favourites:focus {
+  color: #d35400;
+  background-color: white;
+  border: 1px solid #d35400;
+}
+
+/* Favourites Styles end */

@@ -1,31 +1,52 @@
 import React, { Component } from "react";
+import { fetchAlbumsStartAsync } from "./redux/album/albumActions";
+import { Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import Header from "./components/Header";
 import PhotoAlbumsList from "./components/PhotoalbumsList";
-import axios from "axios";
+import PhotoItemList from "./components/PhotoItemList";
+import FavouritesList from "./components/FavouritesList";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      photoalbums: [],
-    };
   }
   componentDidMount() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/albums?_start=0&_limit=5")
-      .then((res) => {
-        const photoalbums = res.data;
-        this.setState({ photoalbums });
-      });
+    const { fetchAlbumsStart } = this.props;
+    fetchAlbumsStart();
   }
+
   render() {
     return (
       <div>
         <Header />
-        <PhotoAlbumsList photoalbums={this.state.photoalbums} />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={(props) => (
+              <PhotoAlbumsList
+                {...props}
+                photoalbums={this.props.albums.albums}
+              />
+            )}
+          />
+          <Route path="/album" component={PhotoItemList} />
+          <Route path="/favourites" component={FavouritesList} />
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    albums: state.albums,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchAlbumsStart: () => dispatch(fetchAlbumsStartAsync()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
