@@ -54,7 +54,8 @@ button {
 }
 
 .photo-album {
-  width: 18%;
+  width: 80%;
+  min-width: 20rem;
   height: 25rem;
   background-color: #e8ecf1;
   box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
@@ -89,7 +90,7 @@ button {
 }
 
 .photo-item {
-  width: 25%;
+  width: 80%;
   margin: 0 1rem 1.2rem;
   max-width: 360px;
   padding: 1rem;
@@ -141,8 +142,14 @@ button {
 /* Icon Styles end */
 
 /* Favourites Styles begin */
-.btn-favourites {
+
+.btn-favourites__container {
+  margin: 0 auto;
+  text-align: center;
   margin-top: 4rem;
+}
+
+.btn-favourites {
   background-color: #d35400;
   color: white;
   padding: 1.2rem;
@@ -222,3 +229,15 @@ button {
 }
 
 /* Loader Styles end */
+
+/* Media Queries */
+
+@media screen and (min-width: 600px) {
+  .photo-album {
+    width: 18%;
+  }
+
+  .photo-item {
+    width: 25%;
+  }
+}
