@@ -5,7 +5,6 @@ import PhotoItem from "./PhotoItem";
 class FavouritesList extends Component {
   render() {
     const { favourites } = this.props.favourites;
-    const { removeFromFavourites } = this.props;
     return (
       <div className="photo-items__container">
         {Object.keys(favourites).map(function (key) {

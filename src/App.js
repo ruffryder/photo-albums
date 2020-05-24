@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import PhotoAlbumsList from "./components/PhotoalbumsList";
 import PhotoItemList from "./components/PhotoItemList";
 import FavouritesList from "./components/FavouritesList";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 class App extends Component {
   constructor(props) {
@@ -20,20 +21,24 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={(props) => (
-              <PhotoAlbumsList
-                {...props}
-                photoalbums={this.props.albums.albums}
-              />
-            )}
-          />
-          <Route path="/album" component={PhotoItemList} />
-          <Route path="/favourites" component={FavouritesList} />
-        </Switch>
+        {this.props.albums.isFetching ? (
+          <LoadingSpinner />
+        ) : (
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={(props) => (
+                <PhotoAlbumsList
+                  {...props}
+                  photoalbums={this.props.albums.albums}
+                />
+              )}
+            />
+            <Route path="/album" component={PhotoItemList} />
+            <Route path="/favourites" component={FavouritesList} />
+          </Switch>
+        )}
       </div>
     );
   }

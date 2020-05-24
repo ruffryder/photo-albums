@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PhotoItem from "./PhotoItem";
+import LoadingSpinner from "./LoadingSpinner";
 
 class PhotosList extends Component {
   constructor(props) {
@@ -9,9 +10,13 @@ class PhotosList extends Component {
   render() {
     return (
       <div className="photo-items__container">
-        {this.props.photos.photos.map((photo) => {
-          return <PhotoItem key={photo.id} photo={photo} />;
-        })}
+        {this.props.photos.isFetching ? (
+          <LoadingSpinner />
+        ) : (
+          this.props.photos.photos.map((photo) => {
+            return <PhotoItem key={photo.id} photo={photo} />;
+          })
+        )}
       </div>
     );
   }
